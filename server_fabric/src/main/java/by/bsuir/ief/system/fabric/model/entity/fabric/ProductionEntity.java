@@ -24,7 +24,7 @@ public class ProductionEntity {
 
     @Nullable
     @SerializedName("componentPartEntities")
-    private List<ComponentPartEntity> componentPartEntities = null;
+    private List<? extends ComponentPartEntity> componentPartEntities = null;
 
     public ProductionEntity(int id, String name, String describe) {
         this.id = id;
@@ -75,11 +75,11 @@ public class ProductionEntity {
         this.outGoingDynamicEntities = outGoingDynamicEntities;
     }
 
-    public List<ComponentPartEntity> getComponentPartEntities() {
+    public List<? extends ComponentPartEntity> getComponentPartEntities() {
         return componentPartEntities;
     }
 
-    public void setComponentPartEntities(List<ComponentPartEntity> componentPartEntities) {
+    public void setComponentPartEntities(List<? extends ComponentPartEntity> componentPartEntities) {
         this.componentPartEntities = componentPartEntities;
     }
 }

@@ -13,6 +13,7 @@ import by.bsuir.ief.system.fabric.model.storage.command.fabric.component_part.Co
 import by.bsuir.ief.system.fabric.model.storage.command.fabric.component_part.ReadComponentWithProducerCommand;
 import by.bsuir.ief.system.fabric.model.storage.command.fabric.out_going_cost.OutGoingConstListCommand;
 import by.bsuir.ief.system.fabric.model.storage.command.fabric.out_going_dynamic.OutGoingDynamicListCommand;
+import by.bsuir.ief.system.fabric.model.storage.command.fabric.production.CalculationOutGoingProductionCommand;
 import by.bsuir.ief.system.fabric.util.ListUtil;
 import by.bsuir.ief.system.fabric.util.ValidUtil;
 import javafx.fxml.FXML;
@@ -38,6 +39,9 @@ public class ProductionFomController extends BaseFormController<ProductionEntity
     private TextField describeField;
 
     @FXML
+    private Label resultCostOutGoing;
+
+    @FXML
     private void handleClear() {
         clearField();
     }
@@ -49,6 +53,8 @@ public class ProductionFomController extends BaseFormController<ProductionEntity
         nameField.setText("");
 
         describeField.setText("");
+
+        resultCostOutGoing.setText("");
     }
 
     @Override
@@ -318,6 +324,22 @@ public class ProductionFomController extends BaseFormController<ProductionEntity
             } catch (IOException e) {
                 DialogManager.showErrorDialog("Error", "Произошла ошибка " + e.getMessage());
             }
+        } else {
+            DialogManager.showErrorDialog("Error", "Произошла ошибка просмотреть можно только после создания продукции!!!");
+        }
+    }
+
+    @FXML
+    private void onActiomCalculate(){
+        if(entity != null && entity.getId() > 0) {
+            Repository.getResult(new CalculationOutGoingProductionCommand(entity.getId()))
+                    .subscribe(new AbstractCommandShowError<CalculationOutGoingProductionEntity>() {
+                        @Override
+                        public void onNext(CalculationOutGoingProductionEntity studentEntities) {
+
+                            resultCostOutGoing.setText(String.format("Полные издержки по этому продукту составляют: %f", studentEntities.getTotalOutGoing()));
+                        }
+                    });
         } else {
             DialogManager.showErrorDialog("Error", "Произошла ошибка просмотреть можно только после создания продукции!!!");
         }
