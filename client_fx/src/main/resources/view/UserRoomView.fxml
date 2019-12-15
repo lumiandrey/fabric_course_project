@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="1309.0" styleClass="background" stylesheets="@../DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.ief.system.fabric.controller.room_controller.UserRoomController">
+   <center>
+      <AnchorPane fx:id="centerPane" prefHeight="200.0" prefWidth="200.0" styleClass="background" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar layoutX="95.0" prefHeight="54.0" prefWidth="1214.0" styleClass="background">
+               <menus>
+                  <Menu mnemonicParsing="false" text="Файл">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Выход" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleProfile" text="Профиль" />
+      
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+
+            <ImageView fitHeight="54.0" fitWidth="121.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/newLogo.png" />
+               </image>
+            </ImageView>
+
+         </children>
+
+      </AnchorPane>
+   </top>
+</BorderPane>

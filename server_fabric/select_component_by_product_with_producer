@@ -1,0 +1,1 @@
+SELECT * FROM component_parts_has_production INNER JOIN component_parts ON component_parts_has_production.component_parts_id_component_parts = component_parts.id_component_parts INNER JOIN producer ON component_parts.producer_id_producer = producer.id_producer WHERE component_parts_has_production.production_id_production = 1 ;

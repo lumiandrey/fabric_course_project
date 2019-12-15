@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane fx:id="pane" prefHeight="50.0" prefWidth="505.0" styleClass="background" stylesheets="@../DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.ief.system.fabric.controller.CreateEditDeleteBottomController">
+   <children>
+      <Button fx:id="create" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleCreate" prefHeight="40.0" prefWidth="153.0" text="Добавить" />
+      <Button fx:id="update" layoutX="176.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleEdit" prefHeight="40.0" prefWidth="153.0" text="Редактировать" />
+      <Button fx:id="delete" layoutX="339.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="40.0" prefWidth="153.0" text="Удалить" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane fx:id="rootPane" prefHeight="65.0" prefWidth="1093.0" styleClass="background" stylesheets="@../DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.ief.system.fabric.controller.BottomBarController">
+   <children>
+      <AnchorPane fx:id="searchPane" prefHeight="65.0" prefWidth="361.0" />
+      <AnchorPane fx:id="adminPane" layoutX="400.0" prefHeight="65.0" prefWidth="742.0" />
+   </children>
+</AnchorPane>

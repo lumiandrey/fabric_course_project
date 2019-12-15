@@ -1,0 +1,1 @@
+SELECT * FROM `production_has_booking` INNER JOIN `production` ON `production_has_booking`.`production_id_production` = `production`.`id_production` WHERE `production_has_booking`.`booking_id_booking` = 1;

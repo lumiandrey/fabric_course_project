@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="rootPane" prefHeight="446.0" prefWidth="482.0" styleClass="background" stylesheets="@../../../DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.ief.system.fabric.controller.form.factory.OutGoingConstFomController">
+   <children>
+      <AnchorPane fx:id="dataPane" prefHeight="446.0" prefWidth="482.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox layoutX="209.0" layoutY="14.0" prefHeight="370.0" prefWidth="256.0">
+               <children>
+                  <Label fx:id="idLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="256.0" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="nameField" alignment="CENTER" prefHeight="59.0" prefWidth="256.0" promptText="Наименование постоянной издержки" styleClass="text-field">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="costOutGoing" alignment="CENTER" prefHeight="59.0" prefWidth="256.0" promptText="Стоимость постоянной издержки" styleClass="text-field">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox layoutX="14.0" layoutY="14.0" prefHeight="370.0" prefWidth="195.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Идентификатор" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Наименование постоянной издержки" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Стоимость постоянной издержки" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <ProgressIndicator fx:id="progressIndicator" layoutX="215.0" layoutY="177.0" visible="false" />
+   </children>
+</AnchorPane>

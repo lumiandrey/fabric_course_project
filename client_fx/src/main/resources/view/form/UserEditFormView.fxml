@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane fx:id="rootPane" prefHeight="446.0" prefWidth="482.0" styleClass="background" stylesheets="@../../DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.ief.system.fabric.controller.form.user.UserFomController">
+   <children>
+      <AnchorPane fx:id="dataPane" prefHeight="446.0" prefWidth="482.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox layoutX="209.0" layoutY="14.0" prefHeight="370.0" prefWidth="256.0">
+               <children>
+                  <Label fx:id="idLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="256.0" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="loginField" alignment="CENTER" prefHeight="59.0" prefWidth="256.0" promptText="Логин" styleClass="text-field">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <PasswordField fx:id="passwordField" alignment="CENTER" prefHeight="62.0" prefWidth="256.0" promptText="Пароль" styleClass="text-field">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <ComboBox fx:id="roleApp" prefHeight="44.0" prefWidth="255.0">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <HBox prefHeight="40.0" prefWidth="256.0">
+                     <children>
+                        <CheckBox fx:id="statusUser" mnemonicParsing="false" prefHeight="32.0" prefWidth="24.0">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                        <Label fx:id="infoBlockStatusUser" prefHeight="34.0" prefWidth="190.0" wrapText="true">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="14.0" layoutY="14.0" prefHeight="370.0" prefWidth="195.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Идентификатор" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Логин" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Пароль" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Роль в системе" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Статус блокировки" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <ProgressIndicator fx:id="progressIndicator" layoutX="215.0" layoutY="177.0" visible="false" />
+   </children>
+</AnchorPane>

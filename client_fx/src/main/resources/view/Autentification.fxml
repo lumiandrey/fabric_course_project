@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane styleClass="background" stylesheets="@../DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.ief.system.fabric.controller.AutentificationController">
+   <children>
+      <AnchorPane fx:id="data" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="304.0" prefWidth="553.9999000000025" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-9.999999747378752E-5" AnchorPane.rightAnchor="-9.999999747378752E-5" AnchorPane.topAnchor="0.0">
+        <children>
+          <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="99.0" layoutY="26.0" prefHeight="39.0" prefWidth="333.0" text="Авторизация" textFill="#396600" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="121.99990000000253">
+            <font>
+              <Font name="Comic Sans MS" size="24.0" />
+            </font>
+          </Label>
+          <TextField fx:id="loginField" alignment="CENTER" layoutX="153.0" layoutY="79.0" prefHeight="30.0" prefWidth="247.0" promptText="Логин" styleClass="text-field" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="153.99990000000253" />
+          <PasswordField fx:id="passwordField" alignment="CENTER" blendMode="SRC_OVER" disable="false" focusTraversable="true" layoutX="153.0" layoutY="137.0" maxHeight="-Infinity" prefHeight="30.0" prefWidth="247.0" promptText="Пароль" visible="true" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="153.99990000000253">
+            <rotationAxis>
+              <Point3D x="222.0" y="500.0" z="1.0" />
+            </rotationAxis>
+          </PasswordField>
+          <Button fx:id="singIn" layoutX="126.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleSingIn" prefHeight="39.0" prefWidth="115.99993896484375" text="Вход" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="126.0">
+            <font>
+              <Font name="Comic Sans MS" size="16.0" fx:id="x1" />
+            </font>
+          </Button>
+          <Button fx:id="registration" contentDisplay="CENTER" font="$x1" graphicTextGap="5.0" layoutX="277.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleRegistration" prefHeight="39.0" prefWidth="155.0" text="Регистрация" AnchorPane.bottomAnchor="65.0" AnchorPane.rightAnchor="121.99990000000253" />
+        </children>
+      </AnchorPane>
+      <ProgressIndicator fx:id="progressIndicator" layoutX="176.0" layoutY="56.0" prefHeight="174.0" prefWidth="171.0" visible="false" />
+
+
+   </children>
+</AnchorPane>

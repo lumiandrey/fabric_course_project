@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="591.0" stylesheets="@../../../DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.ief.system.fabric.controller.table.factory.ProducerTableController">
+   <children>
+      <TableView fx:id="producerEntityTableView" layoutX="10.0" layoutY="10.0" prefHeight="368.0" prefWidth="591.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <columns>
+            <TableColumn fx:id="nameProducerColumn" maxWidth="5000.0" minWidth="10.0" prefWidth="304.0" text="Наименование поставщика" />
+         </columns>
+      </TableView>
+      <ProgressIndicator fx:id="progressIndicator" layoutX="222.0" layoutY="139.0" prefHeight="122.0" prefWidth="147.0" visible="false" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<BorderPane prefHeight="636.0" prefWidth="925.0" styleClass="background" stylesheets="@../DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.ief.system.fabric.controller.RunServerSettingController">
+  <right>
+    <AnchorPane prefHeight="636.0" prefWidth="268.0" styleClass="background">
+      <children>
+        <Label layoutX="14.0" layoutY="31.0" prefHeight="56.0" prefWidth="172.0" text="IP-адрес Сервера:" wrapText="true">
+          <font>
+            <Font name="Comic Sans MS" size="18.0" fx:id="x1" />
+          </font>
+        </Label>
+        <Label fx:id="ipAdress" font="$x1" layoutX="14.0" layoutY="77.0" prefHeight="88.0" prefWidth="245.0" styleClass="label-header" text="" underline="true" wrapText="true" />
+        <Label font="$x1" layoutX="14.0" layoutY="156.0" prefHeight="56.0" prefWidth="172.0" text="Порт прослушки:" wrapText="true" />
+        <Label fx:id="portListening" font="$x1" layoutX="14.0" layoutY="212.0" prefHeight="98.0" prefWidth="248.0" styleClass="label-header" underline="true" wrapText="true" />
+        <Label font="$x1" layoutX="14.0" layoutY="295.0" prefHeight="81.0" prefWidth="172.0" text="Клиентов присоединено:" visible="false" wrapText="true" />
+        <Label fx:id="ActiveClient" font="$x1" layoutX="14.0" layoutY="376.0" prefHeight="81.0" prefWidth="172.0" text="" visible="false" wrapText="true" />
+        <Button layoutX="14.0" layoutY="447.0" mnemonicParsing="false" onAction="#actionNewClient" prefHeight="64.0" prefWidth="161.0" text="Обновить информацию" visible="false" />
+            <Button layoutX="14.0" layoutY="554.0" mnemonicParsing="false" onAction="#onBackup" prefHeight="69.0" prefWidth="235.0" text="Сделать бэкап" />
+      </children>
+    </AnchorPane>
+  </right>
+   <center>
+      <ListView fx:id="stringListView" prefHeight="636.0" prefWidth="323.0" styleClass="background" BorderPane.alignment="CENTER" />
+   </center>
+   <left>
+      <ListView fx:id="userEntityListView" prefHeight="636.0" prefWidth="278.0" styleClass="background" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="rootLayout" minHeight="301.0" prefHeight="301.0" prefWidth="412.0" styleClass="background" stylesheets="@../DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.ief.system.fabric.controller.ConnectionViewController">
+  <children>
+    <Label alignment="CENTER" layoutX="103.0" layoutY="14.0" prefHeight="35.000099999997474" prefWidth="207.0" text="Адрес сервера" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="102.0">
+      <font>
+        <Font name="Comic Sans MS" size="16.0" fx:id="x1" />
+      </font>
+    </Label>
+    <TextField fx:id="ipAdressInput" alignment="CENTER" layoutX="103.0" layoutY="50.0" prefHeight="35.0" prefWidth="207.0" promptText="IP-сервера" text="127.0.0.1" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="102.0">
+
+    </TextField>
+    <TextField fx:id="portListenedInput" alignment="CENTER" blendMode="SRC_OVER" layoutX="103.0" layoutY="151.0" prefHeight="35.0" prefWidth="209.0" promptText="Порт прослушивания сервера" text="40323" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="100.0">
+
+    </TextField>
+    <Label alignment="CENTER" font="$x1" layoutX="103.0" layoutY="116.0" minHeight="9.0" prefHeight="35.0" prefWidth="207.00009999999747" text="Порт прослушивания" textAlignment="CENTER" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="102.0" />
+    <Button fx:id="connectBut" font="$x1" layoutX="102.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleConnectToServer" prefHeight="35.0" prefWidth="209.0" text="Соединиться" textFill="#171616" AnchorPane.leftAnchor="102.0" />
+  </children>
+</AnchorPane>

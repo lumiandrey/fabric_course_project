@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="rootPane" prefHeight="446.0" prefWidth="482.0" styleClass="background" stylesheets="@../../../DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.ief.system.fabric.controller.form.factory.ProductionFomController">
+   <children>
+      <AnchorPane fx:id="dataPane" prefHeight="446.0" prefWidth="482.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox layoutX="209.0" layoutY="14.0" prefHeight="430.0" prefWidth="256.0">
+               <children>
+                  <Label fx:id="idLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="256.0" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="nameField" alignment="CENTER" prefHeight="59.0" prefWidth="256.0" promptText="Наименование продукции" styleClass="text-field">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="describeField" alignment="CENTER" prefHeight="59.0" prefWidth="256.0" promptText="Описание продукции" styleClass="text-field">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" onAction="#onShowDynamicTable" prefHeight="68.0" prefWidth="256.0" text="Посмотреть переменные издержки" />
+                  <Button layoutX="10.0" onAction="#onShowConstTable" layoutY="262.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="256.0" text="Посмотреть брать постоянные издержки" />
+                  <Button layoutX="10.0" onAction="#onShowComponentTable" layoutY="308.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="256.0" text="Посмотреть комплектующие" />
+               </children>
+            </VBox>
+            <VBox layoutX="14.0" layoutY="14.0" prefHeight="430.0" prefWidth="195.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Идентификатор" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Наименование продукции" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Описание продукции" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button contentDisplay="CENTER" lineSpacing="12.0" mnemonicParsing="false" onAction="#onAddDynamicTable" prefHeight="65.0" prefWidth="195.0" text="Выбрать переменные издержки" textAlignment="CENTER" wrapText="true" />
+                  <Button mnemonicParsing="false" onAction="#onAddConstTable" prefHeight="61.0" prefWidth="195.0" text="Выбрать постоянные издержки" textAlignment="CENTER" wrapText="true" />
+                  <Button mnemonicParsing="false" onAction="#onAddComponentTable" prefHeight="72.0" prefWidth="217.0" text="Выбрать комплектующие" textAlignment="CENTER" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <ProgressIndicator fx:id="progressIndicator" layoutX="215.0" layoutY="177.0" visible="false" />
+   </children>
+</AnchorPane>
