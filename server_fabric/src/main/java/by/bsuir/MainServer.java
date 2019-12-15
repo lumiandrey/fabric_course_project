@@ -302,6 +302,8 @@ public class MainServer extends Application {
         FactoryJsonCommand.addCommand("delete.production.id", new ProductionDeleteByIdCommand());
 
         FactoryJsonCommand.addCommand("read.production", new ProductionReadByIdCommand());
+
+        FactoryJsonCommand.addCommand("action.cost.outgoing.production", new CalculationOutGoingProduction());
     }
 
     private void initConsumerCommands() {

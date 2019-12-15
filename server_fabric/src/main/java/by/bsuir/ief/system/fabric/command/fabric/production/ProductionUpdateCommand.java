@@ -33,7 +33,7 @@ public class ProductionUpdateCommand extends BaseUpdateCommand<ProductionEntity>
         if (updateEntity != null) {
 
             //------------- ComponentPartHasProductionEntity update logic---------------//
-            List<ComponentPartEntity> componentPartEntityList = updateEntity.getComponentPartEntities();
+            List<? extends ComponentPartEntity> componentPartEntityList = updateEntity.getComponentPartEntities();
 
             if (componentPartEntityList != null && !componentPartEntityList.isEmpty()) {
 
@@ -155,7 +155,7 @@ public class ProductionUpdateCommand extends BaseUpdateCommand<ProductionEntity>
     }
 
     //------------ component part logic --------------//
-    private boolean isContainsComponentPartHasProductEntity(@NotNull List<ComponentPartEntity> componentPartEntityList, int idCurrentDbEntity) {
+    private boolean isContainsComponentPartHasProductEntity(@NotNull List<? extends ComponentPartEntity> componentPartEntityList, int idCurrentDbEntity) {
 
         for (ComponentPartEntity componentPartEntity : componentPartEntityList) {
 

@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" prefHeight="446.0" prefWidth="482.0" styleClass="background" stylesheets="@../../../DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.ief.system.fabric.controller.form.factory.ProductionFomController">
+<AnchorPane fx:id="rootPane" prefHeight="523.0" prefWidth="482.0" styleClass="background" stylesheets="@../../../DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.ief.system.fabric.controller.form.factory.ProductionFomController">
    <children>
-      <AnchorPane fx:id="dataPane" prefHeight="446.0" prefWidth="482.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="dataPane" prefHeight="523.0" prefWidth="482.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox layoutX="209.0" layoutY="14.0" prefHeight="430.0" prefWidth="256.0">
                <children>
@@ -33,8 +33,8 @@
                      </VBox.margin>
                   </TextField>
                   <Button mnemonicParsing="false" onAction="#onShowDynamicTable" prefHeight="68.0" prefWidth="256.0" text="Посмотреть переменные издержки" />
-                  <Button layoutX="10.0" onAction="#onShowConstTable" layoutY="262.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="256.0" text="Посмотреть брать постоянные издержки" />
-                  <Button layoutX="10.0" onAction="#onShowComponentTable" layoutY="308.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="256.0" text="Посмотреть комплектующие" />
+                  <Button layoutX="10.0" layoutY="262.0" mnemonicParsing="false" onAction="#onShowConstTable" prefHeight="66.0" prefWidth="256.0" text="Посмотреть брать постоянные издержки" />
+                  <Button layoutX="10.0" layoutY="308.0" mnemonicParsing="false" onAction="#onShowComponentTable" prefHeight="58.0" prefWidth="256.0" text="Посмотреть комплектующие" />
                </children>
             </VBox>
             <VBox layoutX="14.0" layoutY="14.0" prefHeight="430.0" prefWidth="195.0">
@@ -68,6 +68,8 @@
                   <Button mnemonicParsing="false" onAction="#onAddComponentTable" prefHeight="72.0" prefWidth="217.0" text="Выбрать комплектующие" textAlignment="CENTER" />
                </children>
             </VBox>
+            <Button layoutX="13.0" layoutY="463.0" mnemonicParsing="false" onAction="#onActiomCalculate" prefHeight="29.0" prefWidth="455.0" text="Рассчитать издержки" />
+            <Label fx:id="resultCostOutGoing" layoutX="14.0" layoutY="501.0" prefHeight="22.0" prefWidth="455.0" />
          </children>
       </AnchorPane>
       <ProgressIndicator fx:id="progressIndicator" layoutX="215.0" layoutY="177.0" visible="false" />
