@@ -102,7 +102,7 @@ public class SchemaDataBase {
         public static final String TABLE = "booking";
 
         public static final String ID = "id_booking";
-        public static final String NAME = "booking";
+        public static final String NAME = "name_booking";
         public static final String ID_CONSUMER = "consumer_id_consumer";
         public static final String COEF_MULTIPLY = "coef_multiply";
     }
