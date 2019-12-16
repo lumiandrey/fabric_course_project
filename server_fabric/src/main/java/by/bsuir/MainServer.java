@@ -12,6 +12,7 @@ import by.bsuir.ief.system.fabric.command.user.*;
 import by.bsuir.ief.system.fabric.controller.ConnectionSettingController;
 import by.bsuir.ief.system.fabric.controller.DialogManager;
 import by.bsuir.ief.system.fabric.model.RoleApp;
+import by.bsuir.ief.system.fabric.model.entity.fabric.BookingEntityWithConsumer;
 import by.bsuir.ief.system.fabric.model.entity.user.RoleApplicationEntity;
 import by.bsuir.ief.system.fabric.model.entity.user.UserEntity;
 import by.bsuir.ief.system.fabric.model.repository.mysql.ConnectionPool;
@@ -156,7 +157,7 @@ public class MainServer extends Application {
 
             //List<ComponentPartWithProducerEntity> entities = RepositoryManager.getInstance().getComponentPartRepository().readComponentPartWithProducerListByProduction(1);
 
-            //List<OutGoingConstEntity> entities1 =  RepositoryManager.getInstance().getOutGoingConstRepository().readOutGoingByProduction(1);
+            List<BookingEntityWithConsumer> entities1 = RepositoryManager.getInstance().getBookingRepository().readBookingEntityWithConsumerList();
             //List<OutGoingDynamicEntity> entities2 =  RepositoryManager.getInstance().getOutGoingDynamicRepository().readOutGoingByProduction(1);
 
             this.primaryStage = primaryStage;

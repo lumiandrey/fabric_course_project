@@ -1,15 +1,19 @@
 package by.bsuir.ief.system.fabric.model.repository.mysql.mysqlrepository.fabric;
 
 import by.bsuir.ief.system.fabric.model.entity.fabric.BookingEntity;
+import by.bsuir.ief.system.fabric.model.entity.fabric.BookingEntityWithConsumer;
 import by.bsuir.ief.system.fabric.model.repository.SchemaDataBase;
 import by.bsuir.ief.system.fabric.model.repository.fabric.IBookingRepository;
 import by.bsuir.ief.system.fabric.model.repository.mysql.mysqlrepository.AbstractRepositoryBase;
 import by.bsuir.ief.system.fabric.model.repository.mysql.resultsetwrapper.BaseResultSetWrapper;
 import by.bsuir.ief.system.fabric.model.repository.mysql.resultsetwrapper.fabric.BookingResultSetWrapper;
+import by.bsuir.ief.system.fabric.model.repository.mysql.resultsetwrapper.fabric.BookingWithCOnsumerResultSetWrapper;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class BookingRepository extends AbstractRepositoryBase<BookingEntity> implements IBookingRepository {
 
@@ -109,5 +113,45 @@ public class BookingRepository extends AbstractRepositoryBase<BookingEntity> imp
     protected void installDeleteStatement(PreparedStatement stm, BookingEntity deleteEntity) throws SQLException {
 
         stm.setInt(1, deleteEntity.getId());
+    }
+
+    @Override
+    public List<BookingEntityWithConsumer> readBookingEntityWithConsumerList() throws Exception {
+        String query = String.format(
+                "SELECT %s.%s, %s.%s, %s.%s, %s.%s, %s.%s " +
+                        "FROM %s INNER JOIN %s ON %s.%s = %s.%s",
+                //arg select
+                SchemaDataBase.Consumer.TABLE,
+                SchemaDataBase.Consumer.ID,
+                SchemaDataBase.Consumer.TABLE,
+                SchemaDataBase.Consumer.NAME,
+                SchemaDataBase.Booking.TABLE,
+                SchemaDataBase.Booking.ID,
+                SchemaDataBase.Booking.TABLE,
+                SchemaDataBase.Booking.NAME,
+                SchemaDataBase.Booking.TABLE,
+                SchemaDataBase.Booking.COEF_MULTIPLY,
+                //from
+                SchemaDataBase.Booking.TABLE,
+                //join table1
+                SchemaDataBase.Consumer.TABLE,
+                //on JOIN table 1
+                SchemaDataBase.Booking.TABLE,
+                SchemaDataBase.Booking.ID_CONSUMER,
+                SchemaDataBase.Consumer.TABLE,
+                SchemaDataBase.Consumer.ID
+        );
+
+        return readCustomQuery(query, new InitializeStatement<>() {
+            @Override
+            public void onSetValue(@NotNull PreparedStatement stm) throws SQLException {
+
+            }
+
+            @Override
+            public BaseResultSetWrapper<BookingEntityWithConsumer> createWrapper(ResultSet rs) {
+                return new BookingWithCOnsumerResultSetWrapper(rs);
+            }
+        });
     }
 }
