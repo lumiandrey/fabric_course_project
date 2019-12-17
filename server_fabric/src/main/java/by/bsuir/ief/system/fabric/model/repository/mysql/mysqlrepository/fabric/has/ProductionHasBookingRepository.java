@@ -10,6 +10,7 @@ import by.bsuir.ief.system.fabric.model.repository.mysql.resultsetwrapper.fabric
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ProductionHasBookingRepository extends AbstractRepositoryBase<ProductionHasBookingEntity> implements IProductionHasBookingRepository {
 
@@ -103,5 +104,10 @@ public class ProductionHasBookingRepository extends AbstractRepositoryBase<Produ
     protected void installDeleteStatement(PreparedStatement stm, ProductionHasBookingEntity deleteEntity) throws SQLException {
 
         stm.setInt(1, deleteEntity.getId());
+    }
+
+    @Override
+    public List<ProductionHasBookingEntity> getListByBooking(int idBooking) throws Exception {
+        return null;
     }
 }

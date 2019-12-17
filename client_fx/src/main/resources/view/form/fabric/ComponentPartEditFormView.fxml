@@ -22,12 +22,12 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="nameField" alignment="CENTER" prefHeight="59.0" prefWidth="256.0" promptText="Наименование постоянной издержки" styleClass="text-field">
+                  <TextField fx:id="nameField" alignment="CENTER" prefHeight="59.0" prefWidth="256.0" promptText="Наименование комплуктующего" styleClass="text-field">
                      <VBox.margin>
                         <Insets bottom="20.0" top="20.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="costOutGoing" alignment="CENTER" prefHeight="59.0" prefWidth="256.0" promptText="Стоимость постоянной издержки" styleClass="text-field">
+                  <TextField fx:id="costOutGoing" alignment="CENTER" prefHeight="59.0" prefWidth="256.0" promptText="Стоимость комплуктующего" styleClass="text-field">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
@@ -49,7 +49,7 @@
                         <Insets bottom="20.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Наименование постоянной издержки" textAlignment="CENTER">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Наименование комплуктующего" textAlignment="CENTER">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -57,7 +57,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Стоимость постоянной издержки" textAlignment="CENTER">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="198.0" text="Стоимость комплуктующего" textAlignment="CENTER">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>

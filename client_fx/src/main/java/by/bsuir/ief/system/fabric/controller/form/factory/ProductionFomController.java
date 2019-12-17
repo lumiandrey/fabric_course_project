@@ -9,7 +9,6 @@ import by.bsuir.ief.system.fabric.controller.table.TableController;
 import by.bsuir.ief.system.fabric.model.entity.fabric.*;
 import by.bsuir.ief.system.fabric.model.storage.Repository;
 import by.bsuir.ief.system.fabric.model.storage.command.AbstractCommandShowError;
-import by.bsuir.ief.system.fabric.model.storage.command.fabric.component_part.ComponentPartListCommand;
 import by.bsuir.ief.system.fabric.model.storage.command.fabric.component_part.ReadComponentWithProducerCommand;
 import by.bsuir.ief.system.fabric.model.storage.command.fabric.out_going_cost.OutGoingConstListCommand;
 import by.bsuir.ief.system.fabric.model.storage.command.fabric.out_going_dynamic.OutGoingDynamicListCommand;
@@ -24,7 +23,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductionFomController extends BaseFormController<ProductionEntity> {

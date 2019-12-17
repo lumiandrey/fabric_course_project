@@ -21,6 +21,7 @@ public class ComponentPartWithProducerResultSetWrapper extends BaseResultSetWrap
                 rs.getInt(SchemaDataBase.ComponentPart.TABLE + '.' + SchemaDataBase.ComponentPart.ID),
                 rs.getString(SchemaDataBase.ComponentPart.TABLE + '.' + SchemaDataBase.ComponentPart.NAME),
                 rs.getDouble(SchemaDataBase.ComponentPart.TABLE + '.' + SchemaDataBase.ComponentPart.COST),
+                rs.getInt(SchemaDataBase.Producer.TABLE + '.' + SchemaDataBase.Producer.ID),
                 new ProducerEntity(
                         rs.getInt(SchemaDataBase.Producer.TABLE + '.' + SchemaDataBase.Producer.ID),
                         rs.getString(SchemaDataBase.Producer.TABLE + '.' + SchemaDataBase.Producer.NAME)

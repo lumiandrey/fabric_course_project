@@ -66,12 +66,16 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.1</version>
         <configuration>
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <classpathPrefix>dependency/</classpathPrefix>
-              <mainClass>com.example.MainClass</mainClass>
+              <classpathPrefix>/</classpathPrefix>
+              <mainClass>by.bsuir.MainServer</mainClass>
+              <manifestEntries>
+                <Class-Path>.</Class-Path>
+              </manifestEntries>
             </manifest>
           </archive>
         </configuration>
@@ -88,7 +92,7 @@
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.3</version>
         <configuration>
-          <mainClass>hellofx/org.openjfx.App</mainClass>
+          <mainClass>by.bsuir.MainServer</mainClass>
         </configuration>
       </plugin>
 

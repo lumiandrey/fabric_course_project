@@ -65,7 +65,7 @@ public class ComponentPartFomController extends BaseFormController<ComponentPart
         );
 
         if (super.entity.getIdProducer() < 0){
-            errorMessage += "Вы не выбрали поставщика! это являается обязательным параметром для добавления комплектующего\n";
+            errorMessage += "Вы не выбрали поставщика! это являается обязательным параметром для добавления/редактирования комплектующего\n";
         }
 
         return errorMessage;

@@ -6,6 +6,7 @@ import by.bsuir.ief.system.fabric.model.storage.command.AbstractCommand;
 import connection.client_support.Request;
 import connection.client_support.requestbody.StringRequestBody;
 import io.reactivex.Observable;
+import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
 
 public class ConsumerDeleteCommand extends AbstractCommand<Boolean> {
 
@@ -28,6 +29,8 @@ public class ConsumerDeleteCommand extends AbstractCommand<Boolean> {
 
     @Override
     public Observable<Boolean> execute() {
-        return null;
+        return super.getObservable()
+                .map(response -> response.isSuccessfully())
+                .observeOn(JavaFxScheduler.platform());
     }
 }

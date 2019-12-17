@@ -1,11 +1,14 @@
 package by.bsuir.ief.system.fabric.model.storage.command.fabric.component_part;
 
 
+import by.bsuir.ief.system.fabric.model.entity.user.UserEntity;
 import by.bsuir.ief.system.fabric.model.storage.ConnectToServer;
 import by.bsuir.ief.system.fabric.model.storage.command.AbstractCommand;
+import com.google.gson.Gson;
 import connection.client_support.Request;
 import connection.client_support.requestbody.StringRequestBody;
 import io.reactivex.Observable;
+import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
 
 public class ComponentPartDeleteCommand extends AbstractCommand<Boolean> {
 
@@ -28,6 +31,8 @@ public class ComponentPartDeleteCommand extends AbstractCommand<Boolean> {
 
     @Override
     public Observable<Boolean> execute() {
-        return null;
+        return super.getObservable()
+                .map(response -> response.isSuccessfully())
+                .observeOn(JavaFxScheduler.platform());
     }
 }

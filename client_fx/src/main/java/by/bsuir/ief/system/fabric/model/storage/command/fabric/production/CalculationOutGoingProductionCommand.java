@@ -6,6 +6,7 @@ import by.bsuir.ief.system.fabric.model.storage.command.AbstractCommand;
 import com.google.gson.Gson;
 import connection.client_support.Request;
 import connection.client_support.requestbody.NoContentRequestBody;
+import connection.client_support.requestbody.StringRequestBody;
 import io.reactivex.Observable;
 import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
 
@@ -19,7 +20,7 @@ public class CalculationOutGoingProductionCommand extends AbstractCommand<Calcul
     @Override
     protected Request getRequest() throws Exception {
         Request.Builder builder = new Request.Builder()
-                .body(new NoContentRequestBody())
+                .body(new StringRequestBody(String.valueOf(id)))
                 .addMethod("action.cost.outgoing.production");
 
         builder = ConnectToServer.setConnectData(builder);
