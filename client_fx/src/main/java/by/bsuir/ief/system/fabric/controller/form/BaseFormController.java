@@ -16,6 +16,8 @@ abstract public class BaseFormController<T> implements FormController<T> {
     @FXML
     protected ProgressIndicator progressIndicator;
 
+    protected Stage primaryStage;
+
     protected T entity = null;
 
     protected abstract String isValidMessage();
@@ -81,7 +83,7 @@ abstract public class BaseFormController<T> implements FormController<T> {
 
     @Override
     public void setPrimaryStage(Stage primaryStage) {
-
+        this.primaryStage = primaryStage;
     }
 
     @Override

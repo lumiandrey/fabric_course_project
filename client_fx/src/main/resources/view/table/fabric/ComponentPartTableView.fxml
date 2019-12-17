@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -15,5 +16,6 @@
          </columns>
       </TableView>
       <ProgressIndicator fx:id="progressIndicator" layoutX="222.0" layoutY="139.0" prefHeight="122.0" prefWidth="147.0" visible="false" />
+      <Button layoutX="164.0" layoutY="368.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="270.0" text="Экспорт в файл" />
    </children>
 </AnchorPane>
