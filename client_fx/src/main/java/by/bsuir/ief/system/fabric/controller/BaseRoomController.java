@@ -7,6 +7,7 @@ import by.bsuir.ief.system.fabric.controller.form.FormController;
 import by.bsuir.ief.system.fabric.controller.table.TableController;
 import by.bsuir.ief.system.fabric.model.entity.fabric.*;
 import by.bsuir.ief.system.fabric.model.entity.user.UserEntity;
+import by.bsuir.ief.system.fabric.model.storage.ConnectToServer;
 import by.bsuir.ief.system.fabric.model.storage.Repository;
 import by.bsuir.ief.system.fabric.model.storage.command.AbstractObserver;
 import by.bsuir.ief.system.fabric.model.storage.command.ExitCommand;
@@ -78,12 +79,14 @@ public class BaseRoomController implements Controller {
 
                 }
             });
+
             FXMLLoader loader = FXLoaderController.load("ConnectionView");
 
             ConnectionViewController controller = loader.getController();
 
             Scene scene = new Scene(controller.getRootLayout());
             primaryStage.setScene(scene);
+            ConnectToServer.setToken("");
 
             controller.setPrimaryStage(this.primaryStage);
             primaryStage.show();
@@ -95,36 +98,7 @@ public class BaseRoomController implements Controller {
         }
     }
 
-    @FXML
-    private void handleWorkUsers(){
 
-        clearPane();
-
-        try {
-            TableController<UserEntity> tableController = FXLoaderController.loadTableController("UserTableView");
-
-            FormController<UserEntity> formController = FXLoaderController.loadFormController("UserEditFormView");
-
-            BottomBarController bottomBarController = (BottomBarController) FXLoaderController.loadController("BottomBar");
-
-            CreateEditDeleteBottomController createEditDeleteBottomController = (CreateEditDeleteBottomController) FXLoaderController.loadController("CreateEditDeleteBottomBarView");
-
-            createEditDeleteBottomController.setCallback(new UserCallbackBottomBarManipulation(tableController, formController));
-            bottomBarController.setAdminPane(createEditDeleteBottomController.getLayout());
-
-            pane.setBottom(bottomBarController.getLayout());
-
-            Repository.getsUser(tableController);
-
-            tableController.setCallbackSelect(formController::setEntity);
-
-            pane.setCenter(tableController.getLayout());
-            pane.setLeft(formController.getLayout());
-
-        } catch (IOException e) {
-            DialogManager.showErrorDialog("Error", "Произошла ошибка " + e.getMessage());
-        }
-    }
 
     @FXML
     private void handleWorkProducer(){

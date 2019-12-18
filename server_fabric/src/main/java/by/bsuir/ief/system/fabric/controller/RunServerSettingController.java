@@ -93,6 +93,26 @@ public class RunServerSettingController implements AcceptNewClient {
         ActiveClient.setText(String.valueOf(0));
         portListening.setText(String.valueOf(0));
         ipAdress.setText("127.0.0.1");
+
+        stringListView.setCellFactory(new Callback<>() {
+
+            @Override
+            public ListCell<String> call(ListView<String> param) {
+                ListCell<String> cell = new ListCell<String>() {
+
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
+
+        stringListView.setItems(strings);
     }
 
     @FXML
@@ -141,8 +161,11 @@ public class RunServerSettingController implements AcceptNewClient {
 
         if (!string.isEmpty()) {
             stringArrayList.add(string);
+            strings.add(string);
 
-            strings = parseListString(strings, stringArrayList);
+           /* stringListView.getItems().clear();
+            stringListView.setItems(strings);*/
+            /*strings = parseListString(strings, stringArrayList);
 
             stringListView.getItems().clear();
             stringListView.setCellFactory(new Callback<>() {
@@ -164,7 +187,7 @@ public class RunServerSettingController implements AcceptNewClient {
             });
 
             stringArrayList.add(string);
-            stringListView.setItems(strings);
+            stringListView.setItems(strings);*/
         }
     }
 

@@ -34,5 +34,34 @@ public class AdminController extends BaseRoomController {
     @FXML
     private AnchorPane centerPane;
 
+    @FXML
+    private void handleWorkUsers(){
 
+        clearPane();
+
+        try {
+            TableController<UserEntity> tableController = FXLoaderController.loadTableController("UserTableView");
+
+            FormController<UserEntity> formController = FXLoaderController.loadFormController("UserEditFormView");
+
+            BottomBarController bottomBarController = (BottomBarController) FXLoaderController.loadController("BottomBar");
+
+            CreateEditDeleteBottomController createEditDeleteBottomController = (CreateEditDeleteBottomController) FXLoaderController.loadController("CreateEditDeleteBottomBarView");
+
+            createEditDeleteBottomController.setCallback(new UserCallbackBottomBarManipulation(tableController, formController));
+            bottomBarController.setAdminPane(createEditDeleteBottomController.getLayout());
+
+            pane.setBottom(bottomBarController.getLayout());
+
+            Repository.getsUser(tableController);
+
+            tableController.setCallbackSelect(formController::setEntity);
+
+            pane.setCenter(tableController.getLayout());
+            pane.setLeft(formController.getLayout());
+
+        } catch (IOException e) {
+            DialogManager.showErrorDialog("Error", "Произошла ошибка " + e.getMessage());
+        }
+    }
 }

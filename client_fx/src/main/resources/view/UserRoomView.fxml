@@ -17,7 +17,6 @@
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Выход" />
                         <MenuItem mnemonicParsing="false" onAction="#handleProfile" text="Профиль" />
-                        <MenuItem mnemonicParsing="false" onAction="#handleWorkUsers" text="Работа с пользователями" />
                         <MenuItem mnemonicParsing="false" onAction="#handleWorkProducer" text="Работа с Поставщиками" />
                         <MenuItem mnemonicParsing="false" onAction="#handleWorkConsumer" text="Работа с Потребителями" />
                         <MenuItem mnemonicParsing="false" onAction="#handleWorkOutGoingConst" text="Работа с постоянными издержками" />

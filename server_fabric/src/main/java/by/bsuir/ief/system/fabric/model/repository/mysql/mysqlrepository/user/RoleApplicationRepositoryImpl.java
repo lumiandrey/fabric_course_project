@@ -116,7 +116,7 @@ public class RoleApplicationRepositoryImpl extends AbstractRepositoryBase<RoleAp
                 SchemaDataBase.RoleApplication.NAME,
                 SchemaDataBase.RoleApplication.LEVEL,
                 SchemaDataBase.RoleApplication.TABLE,
-                SchemaDataBase.RoleApplication.ID);
+                SchemaDataBase.RoleApplication.NAME);
         Connection connection = openConnection();
 
         try {

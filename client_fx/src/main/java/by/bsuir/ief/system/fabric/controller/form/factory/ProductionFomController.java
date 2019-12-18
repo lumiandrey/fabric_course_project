@@ -15,13 +15,19 @@ import by.bsuir.ief.system.fabric.model.storage.command.fabric.out_going_dynamic
 import by.bsuir.ief.system.fabric.model.storage.command.fabric.production.CalculationOutGoingProductionCommand;
 import by.bsuir.ief.system.fabric.util.ListUtil;
 import by.bsuir.ief.system.fabric.util.ValidUtil;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -89,11 +95,6 @@ public class ProductionFomController extends BaseFormController<ProductionEntity
     @Override
     public Pane getLayout() {
         return rootPane;
-    }
-
-    @Override
-    public void setPrimaryStage(Stage primaryStage) {
-
     }
 
     @FXML
@@ -336,10 +337,246 @@ public class ProductionFomController extends BaseFormController<ProductionEntity
                         public void onNext(CalculationOutGoingProductionEntity studentEntities) {
 
                             resultCostOutGoing.setText(String.format("Полные издержки по этому продукту составляют: %f", studentEntities.getTotalOutGoing()));
+                            export(studentEntities);
                         }
                     });
         } else {
             DialogManager.showErrorDialog("Error", "Произошла ошибка просмотреть можно только после создания продукции!!!");
         }
     }
+
+    @FXML
+    private void export(CalculationOutGoingProductionEntity entity){
+
+        FileChooser fileChooser = new FileChooser();
+
+        // Set extension filter
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                "pdf files (*.pdf)", "*.pdf");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        // Show save file dialog
+        File file = fileChooser.showSaveDialog(primaryStage);
+
+        if (file != null) {
+            // Make sure it has the correct extension
+            if (!file.getPath().endsWith(".pdf")) {
+                file = new File(file.getPath() + ".pdf");
+            }
+
+            File finalFile = file;
+            new Thread(()->{ try  {
+                Document document = new Document();
+                // step 2
+                PdfWriter.getInstance(document, new FileOutputStream(finalFile));
+                // step 3
+                document.open();
+
+                BaseFont font = BaseFont.createFont("c:/windows/fonts/arialbd.ttf", "cp1251", BaseFont.EMBEDDED);
+                BaseFont  Twofont = BaseFont.createFont("c:/windows/fonts/arialbd.ttf", "cp1251", BaseFont.NOT_EMBEDDED);
+
+                //-------------added PDF FEATURES EZXPORT Production Component part -----------------//
+                List<? extends ComponentPartEntity> componentPartEntities = entity.getProductionEntity().getComponentPartEntities();
+                if (!componentPartEntities.isEmpty()) {
+
+                    // параграф с текстом
+                    Paragraph purpose = new Paragraph("Данные о компонентах продукта", new Font(font, 14));
+                    purpose.setSpacingAfter(16);
+
+                    PdfPTable table = new PdfPTable(2);
+
+                    PdfPCell c1 = new PdfPCell(new Phrase("наименование компонента", new Font(font, 14)));
+                    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    table.addCell(c1);
+
+                    c1 = new PdfPCell(new Phrase("Стоимость", new Font(font, 14)));
+                    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                    table.addCell(c1);
+
+                    table.setHeaderRows(1);
+
+                    double totalCostCopmonent = 0;
+
+                    for (ComponentPartEntity routeEntity : componentPartEntities) {
+                        table.addCell(new Phrase(String.valueOf(routeEntity.getName()), new Font(Twofont, 12)));
+                        table.addCell(new Phrase(String.valueOf(routeEntity.getCost()), new Font(font, 12)));
+
+                        totalCostCopmonent += routeEntity.getCost();
+
+                        //table.setFooterRows();
+                    }
+
+                    c1 = new PdfPCell(new Phrase("Итого получилось", new Font(Twofont, 14)));
+                    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    table.addCell(c1);
+
+                    c1 = new PdfPCell(new Phrase(String.valueOf(totalCostCopmonent), new Font(font, 14)));
+                    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                    table.addCell(c1);
+
+                    //table.setFooterRows(table.getRows().size());
+                    // step 4
+                    purpose.add(table);
+                    //document.add(table);
+                    document.add(purpose);
+                }
+
+                document.add(new Header("", ""));
+
+                List<OutGoingDynamicEntity> outGoingDynamicEntities = entity.getProductionEntity().getOutGoingDynamicEntities();
+                if (!componentPartEntities.isEmpty()) {
+
+                    // параграф с текстом
+                    Paragraph purpose = new Paragraph("Данные о переменных издержках", new Font(font, 14));
+                    purpose.setSpacingAfter(16);
+
+                    PdfPTable table = new PdfPTable(2);
+
+                    PdfPCell c1 = new PdfPCell(new Phrase("Переменные издержки", new Font(font, 14)));
+                    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    table.addCell(c1);
+
+                    c1 = new PdfPCell(new Phrase("Стоимость", new Font(font, 14)));
+                    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                    table.addCell(c1);
+
+                    table.setHeaderRows(1);
+
+                    double totalCostCopmonent = 0;
+
+                    for (OutGoingDynamicEntity routeEntity : outGoingDynamicEntities) {
+                        table.addCell(new Phrase(String.valueOf(routeEntity.getName()), new Font(Twofont, 12)));
+                        table.addCell(new Phrase(String.valueOf(routeEntity.getCost()), new Font(font, 12)));
+
+                        totalCostCopmonent += routeEntity.getCost();
+
+                        //table.setFooterRows();
+                    }
+
+                    c1 = new PdfPCell(new Phrase("Итого получилось", new Font(Twofont, 14)));
+                    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    table.addCell(c1);
+
+                    c1 = new PdfPCell(new Phrase(String.valueOf(totalCostCopmonent), new Font(font, 14)));
+                    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                    table.addCell(c1);
+
+                    //table.setFooterRows(table.getRows().size());
+                    // step 4
+                    purpose.add(table);
+                    document.add(purpose);
+                }
+
+                document.add(new Header("", ""));
+
+                List<OutGoingConstEntity> outGoingConstEntities = entity.getProductionEntity().getOutGoingConstEntities();
+                if (!componentPartEntities.isEmpty()) {
+
+                    Paragraph purpose = new Paragraph("Данные о постоянных издержках", new Font(font, 14));
+                    purpose.setSpacingAfter(16);
+                    PdfPTable table = new PdfPTable(2);
+
+                    PdfPCell c1 = new PdfPCell(new Phrase("Постоянные издержки", new Font(font, 14)));
+                    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    table.addCell(c1);
+
+                    c1 = new PdfPCell(new Phrase("Стоимость", new Font(font, 14)));
+                    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                    table.addCell(c1);
+
+                    table.setHeaderRows(1);
+
+                    double totalCostCopmonent = 0;
+
+                    for (OutGoingConstEntity routeEntity : outGoingConstEntities) {
+                        table.addCell(new Phrase(String.valueOf(routeEntity.getName()), new Font(Twofont, 12)));
+                        table.addCell(new Phrase(String.valueOf(routeEntity.getCost()), new Font(font, 12)));
+
+                        totalCostCopmonent += routeEntity.getCost();
+
+                        //table.setFooterRows();
+                    }
+
+                    c1 = new PdfPCell(new Phrase("Итого получилось", new Font(Twofont, 14)));
+                    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    table.addCell(c1);
+
+                    c1 = new PdfPCell(new Phrase(String.valueOf(totalCostCopmonent), new Font(font, 14)));
+                    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                    table.addCell(c1);
+
+                    //table.setFooterRows(table.getRows().size());
+                    // step 4
+                    purpose.add(table);
+                    document.add(purpose);
+                }
+
+                //document.add();
+
+                Paragraph purpose = new Paragraph(String.format("Общая стоимость продукции с учётом издержек: %s", String.valueOf(entity.getTotalOutGoing())), new Font(font, 14));
+                purpose.setSpacingAfter(10);
+                PdfPTable table = new PdfPTable(2);
+
+                PdfPCell c1 = new PdfPCell(new Phrase("Общая стоимость продукции с учётом издержек", new Font(font, 14)));
+                c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(c1);
+
+                c1 = new PdfPCell(new Phrase(String.valueOf(entity.getTotalOutGoing()), new Font(font, 14)));
+                c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                table.addCell(c1);
+
+                table.setHeaderRows(1);
+                // step 5
+                purpose.add(table);
+
+                //purpose.add(new Header("Общая стоимость продукции с учётом издержек", String.valueOf(entity.getTotalOutGoing())));
+                document.add(purpose);
+
+                document.close();
+            } catch (IOException | DocumentException e) {
+                Platform.runLater(()->{
+                    DialogManager.showErrorDialog("Ошибка при записи в файл", "Ошибка при записи в файл " + e.getMessage());});
+            }
+            }).start();
+
+        }
+    }
+
+   /* PdfPTable createPdfTable(CalculationOutGoingProductionEntity entity) throws IOException, DocumentException {
+
+        PdfDocument pdfDocument = new PdfDocument();
+
+        BaseFont font = BaseFont.createFont("c:/windows/fonts/arialbd.ttf", "cp1251", BaseFont.EMBEDDED);
+        BaseFont  Twofont = BaseFont.createFont("c:/windows/fonts/arialbd.ttf", "cp1251", BaseFont.NOT_EMBEDDED);
+        PdfPTable table = new PdfPTable(3);
+
+        PdfPCell c1 = new PdfPCell(new Phrase("Логин", new Font(font, 14)));
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Статус пользователя", new Font(font, 14)));
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Уровень доступа", new Font(font, 14)));
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(c1);
+        table.setHeaderRows(1);
+
+        for(UserEntity routeEntity: entityObservableList){
+            table.addCell(new Phrase(String.valueOf(routeEntity.getLogin()), new Font(Twofont, 12)));
+            table.addCell(new Phrase(routeEntity.getStatus()  != 0 ? "не заблокирован" : "заблокирован", new Font(font, 12)));
+            table.addCell(new Phrase(String.valueOf(routeEntity.getRoleApplication().getName()), new Font(Twofont, 12)));
+        }
+
+        return pdfDocument;
+    }*/
 }
