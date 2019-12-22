@@ -1,4 +1,4 @@
-package by.bsuir;
+package by;
 
 import by.bsuir.ief.system.fabric.FactoryJsonCommand;
 import by.bsuir.ief.system.fabric.command.fabric.booking.*;

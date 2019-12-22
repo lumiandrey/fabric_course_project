@@ -1,4 +1,3 @@
 Manifest-Version: 1.0
-Class-Path: classpath:
-Main-Class: by.bsuir.MainServer
+Main-Class: by.MainServer
 

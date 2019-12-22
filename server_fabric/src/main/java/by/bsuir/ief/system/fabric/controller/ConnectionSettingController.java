@@ -1,6 +1,6 @@
 package by.bsuir.ief.system.fabric.controller;
 
-import by.bsuir.MainServer;
+import by.MainServer;
 import by.bsuir.ief.system.fabric.ServerThreadWork;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
